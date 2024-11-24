@@ -1,0 +1,27 @@
+<table   border=1>
+
+<tr>
+  <th>id</th>
+  <th>Name</th>
+  <th>Password</th>
+  <th>Delete</th>
+  <th>Edit</th>
+  </tr>
+  <% if(data.length){
+    for(var i=0;i<data.length;i++)
+	{
+	%>
+	<tr>
+	   <th><%=data[i].id%></th>
+	     <th><%=data[i].name%></th>
+		   <th><%=data[i].password%></th>
+		     <th><a href="/delete/<%=data[i].id%>">Delete</a></th>
+			   <th><a href="/edit/<%=data[i].id%>">Edit</a></th>
+  
+  </tr>
+  
+  <%}
+  }
+  %>
+  
+  </table>

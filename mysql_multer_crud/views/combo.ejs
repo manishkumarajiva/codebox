@@ -1,0 +1,16 @@
+<select>
+<option>select data</option>
+<% if(data.length) 
+{
+ for(i=0;i<data.length;i++)
+ {
+ %>
+ <option><%=data[i].name%></option>
+ <%
+ }
+ }
+ %>
+ 
+
+
+</select>

@@ -1,0 +1,11 @@
+<%if(!user)
+{
+%>
+<p>welcome ! please<a href="/login"><h1>Login</h1></a>.</p>
+<%
+}
+else
+{
+%>
+<p>Hello, <%=user.username %> view your<a href="/profile">profile</a>.</p>
+<% } %>
