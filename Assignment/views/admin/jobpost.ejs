@@ -1,0 +1,66 @@
+<%-include('../partials/css.ejs')%>
+<%-include('../partials/navbar.ejs')%>
+
+
+
+<section class="bg-white p-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card border border-light-subtle bg-light rounded-3 shadow-sm">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <a href="/">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUnx9uQ4f0H5ChscOExT7ZZnKusAx4OLUU3g&s" alt="BootstrapBrain Logo" height="100">
+                            </a>
+                        </div>
+                        <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Enter Job Details</h2>
+                        <!-- FORM -->
+                        <form action="/admin/post" method="POST" enctype="multipart/form-data">
+                            <div class="row gy-2 overflow-hidden">
+
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="TYPE" id="type" placeholder="Type" required>
+                                        <label for="type" class="form-label">Job Type</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="TITLE" id="title" placeholder="Title" required>
+                                        <label for="title" class="form-label">Job Title</label>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="COMPANY" id="company" placeholder="Company" required>
+                                        <label for="company" class="form-label">Company Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" name="DESCRIPTION" id="description" placeholder="Description" required></textarea>
+                                        <label for="description" class="form-label">Job Description</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating mb-3">
+                                        <input type="file" class="form-control" name="CIMAGE" id="cimage" required>
+                                        <label for="cimage" class="form-label">Company Image</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-grid my-3">
+                                        <button class="btn btn-primary btn-lg" type="submit"> POST </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

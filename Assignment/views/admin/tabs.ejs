@@ -1,0 +1,260 @@
+<%-include('../partials/css.ejs')%> 
+
+<div class="col-12 col-lg-8 col-xl-9">
+    <div class="card widget-card border-light shadow-sm">
+      <div class="card-body p-4">
+        <ul class="nav nav-tabs" id="profileTab" role="tablist">
+          <!-- profile -->
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="overview-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#overview-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="overview-tab-pane"
+              aria-selected="true"
+            >
+            🔵 Profile
+            </button>
+          </li>
+          <!-- Job post tab -->
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="jobpost-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#jobpost-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="jobpost-tab-pane"
+              aria-selected="false"
+            >
+            🟪 Jobs
+            </button>
+          </li>
+          <!-- Users list tab -->
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="userlist-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#userlist-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="userlist-tab-pane"
+              aria-selected="false"
+            >
+            👁‍🗨 Users
+            </button>
+          </li>
+          <!-- Job request tab -->
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="jobrequest-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#jobrequest-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="jobrequest-tab-pane"
+              aria-selected="false"
+            >
+            🔔 Job Requests
+            </button>
+          </li>
+        </ul>
+  
+        <!-- Tab Content -->
+        <div class="tab-content pt-4" id="profileTabContent">
+          <!-- Profile content -->
+          <div
+            class="tab-pane fade show active"
+            id="overview-tab-pane"
+            role="tabpanel"
+            aria-labelledby="overview-tab"
+            tabindex="0"
+          >
+            <h5 class="mb-3">About</h5>
+            <p class="lead mb-3">
+              <%=user.NAME%> is an Admin, who brings experience and expertise to project management.
+              With a proven track record of successfully delivering complex projects on time and within budget, Ethan Leo is the go-to professional for organizations seeking efficient and effective project leadership.
+            </p>
+            <h5 class="mb-3">Profile</h5>
+            <div class="row g-0">
+              <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                <div class="p-2">First Name</div>
+              </div>
+              <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                <div class="p-2"><%=user.NAME%></div>
+              </div>
+              <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                <div class="p-2">Last Name</div>
+              </div>
+              <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                <div class="p-2"><%=user.NAME%></div>
+              </div>
+              <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                <div class="p-2">Address</div>
+              </div>
+              <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                <div class="p-2"><%=user.STATE%> - <%=user.CITY%></div>
+              </div>
+              <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                <div class="p-2">Job</div>
+              </div>
+              <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                <div class="p-2">Admin</div>
+              </div>
+              <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
+                <div class="p-2">Email</div>
+              </div>
+              <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                <div class="p-2"><%=user.EMAIL%></div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Jobs content -->
+          <div class="tab-pane fade" id="jobpost-tab-pane" role="tabpanel" aria-labelledby="jobpost-tab" tabindex="0">
+            <a href="/page/jobpost" class="btn btn-primary">New Job Post</a>
+            <p>Job Post: <%= jobpost.length %></p>
+            <div class="container d-flex flex-wrap justify-content-around">
+              <% if (jobpost.length > 0) { 
+                for (let i = 0; i < jobpost.length; i++) { %>
+                <div class="card border-1 border-primary my-3 mx-2" style="width: 300px">
+                  <div class="card-body px-3 d-flex flex-column align-items-center">
+                    <!-- Company Logo Section -->
+                    <img class="mx-auto rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRENF9uv9UWIWWbExsgj7XyX58xMFAOZTzUSQ&s" alt="Company Logo" style="width: 80px; height: 80px;" />
+
+                    <!-- Job Title and Description -->
+                    <h6 class="card-title font-weight-bold text-dark mb-2"><%= jobpost[i].TITLE %></h6>
+                    <small class="text-muted mb-2"><%= jobpost[i].DESCRIPTION %></small>
+
+                    <div class="d-flex justify-content-between align-items-center flex-wrap mt-2">
+                      <!-- Job Type Badge -->
+                      <div class="badge bg-primary text-white rounded-pill fs-6 px-3 py-2"><%= jobpost[i].TYPE %></div>
+                    </div>
+
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mt-2">
+                      <!-- Company Name -->
+                      <div class="d-flex align-items-center text-secondary">
+                        🏢
+                        <span class="ms-2"><%= jobpost[i].COMPANY %></span>
+                      </div>
+
+                      <!-- Date Posted -->
+                      <div class="d-flex align-items-center text-muted fs-7">
+                        📅
+                        <span class="ms-2">Posted on <%= jobpost[i].DATE %></span>
+                      </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                      <a href="/post/edit/<%= jobpost[i].ID %>" class="text-info text-decoration-none fs-6">
+                        <button class="btn btn-outline-primary btn-sm">Edit</button>
+                      </a>
+                      <a href="/admin/post/delete/<%= jobpost[i].ID %>" class="text-danger text-decoration-none fs-6">
+                        <button class="btn btn-outline-danger btn-sm">Delete</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <% } } else { %>
+              <!-- No Posts Available -->
+              <div class="card border-0 bg-transparent">
+                <figure class="card-img-top mb-4 overflow-hidden bsb-overlay-hover">
+                  <a href="#!">
+                    <img class="img-fluid bsb-scale bsb-hover-scale-up" loading="lazy" src="jobpost:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="No Posts Available" style="object-fit: cover; height: 200px; width: 100%;" />
+                  </a>
+                </figure>
+                <div class="card-body p-4 text-center">
+                  <p class="text-muted">No posts available at the moment.</p>
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </div>
+
+  
+          <!-- Users content -->
+          <div
+            class="tab-pane fade"
+            id="userlist-tab-pane"
+            role="tabpanel"
+            aria-labelledby="userlist-tab"
+            tabindex="0"
+          >
+            <p>User List: <%= jobseeker.length %></p>
+            <div class="container d-flex flex-wrap justify-content-around">
+              <% if(jobseeker.length > 0) { for(let i = 0; i < jobseeker.length; i++) { if(jobseeker[i].ROLE !== 'ADMIN'){ %>
+                <div class="card" style="width: 15rem">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRx4n2UTACZg5IqxHGz_UTdhTtNqgg9DuwLw&s" class="card-img-top" alt="User Image"/>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= jobseeker[i].NAME %></h5>
+                    <p class="card-text m-0">Email: <%= jobseeker[i].EMAIL %></p>
+                    <p class="card-text m-0">City: <%= jobseeker[i].CITY %></p>
+                    <p class="card-text m-0">State: <%= jobseeker[i].STATE %></p>
+                    <p class="card-text m-0">Role: <%= jobseeker[i].ROLE %></p>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-primary">Edit</button>
+                      <a href="/admin/user/del/<%=jobseeker[i].ID%>" class="btn btn-danger">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              <% } } } %>
+            </div>
+          </div>
+
+          <!-- Job Requests content -->
+          <div
+          class="tab-pane fade"
+          id="jobrequest-tab-pane"
+          role="tabpanel"
+          aria-labelledby="jobrequest-tab"
+          tabindex="0"
+          >
+          <p>Job Requests: <%= jobrequest.length %></p>
+          <div class="container">
+            <% if (jobrequest.length > 0) { %>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">UserID</th>
+                    <th scope="col">Job ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Applied On</th>
+                    <th scope="col">Experience</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (let i = 0; i < jobrequest.length; i++) { 
+                        if (jobrequest[i].ROLE !== 'ADMIN') { %>
+                    <tr>
+                      <td><%= jobrequest[i].USERID %></td>
+                      <td><%= jobrequest[i].JOBPOSTID %></td>
+                      <td><%= jobrequest[i].EMAILID %></td>
+                      <td><%= jobrequest[i].APPLYON %></td>
+                      <td><%= jobrequest[i].EXPERIENCE || 'N/A' %> year</td>
+                      <td class="d-flex flex-wrap justify-content-between">
+                        <a class="text-decoration-none"> ✅ </a>
+                        <a class="text-decoration-none"> ❌ </a>
+                      </td>
+                    </tr>
+                  <% } } %>
+                </tbody>
+              </table>
+            <% } else { %>
+              <p>No job requests found.</p>
+            <% } %>
+          </div>
+          </div>
+
+        </div>
+  
+      </div>
+    </div>
+  </div>

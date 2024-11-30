@@ -1,0 +1,48 @@
+<%-include('../partials/css.ejs')%>
+<%-include('../partials/navbar.ejs')%>
+
+<section class="bg-light py-3 py-md-5">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-md-6 col-lg-6 col-xl-6 col-xxl-5">
+          <h2 class="mb-4 display-5 text-center"> Easy Apply </h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-lg-center">
+        <div class="col-12 col-lg-6">
+          <div class="bg-primary-subtle border rounded shadow-sm overflow-hidden">
+
+            <form action="/jobseeker/applyjob/<%=jobid%>/<%=userid%>" method="post">
+              <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                <!-- Full Name Field -->
+                <div class="col-12">
+                  <label for="EMAIL" class="form-label"> Email <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control border-0 shadow-none" id="EMAIL" name="EMAIL" required>
+                </div>
+
+               
+
+                <!-- EXPERIENCE Field -->
+                <div class="col-12">
+                  <label for="EXPERIENCE" class="form-label"> Year of Experience <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control border-0 shadow-none" id="EXPERIENCE" name="EXPERIENCE" required>
+                </div>
+
+               
+                <!-- Submit Button -->
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn btn-info btn-lg text-white" type="submit"> Apply </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
