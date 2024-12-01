@@ -8,6 +8,9 @@ const { UpdateJobPost, DeleteJob } = require('../controllers/jobpost.controller.
 
 const { DeleteJobSeeker } = require('../controllers/users.controller.js');
 
+const { DeleteJobRequest } = require('../controllers/jobrequest.controller.js');
+
+
 // job post 
 router.post('/post', isAdmin, upload.single('CIMAGE'), CreateJobPost);
 router.get('/post', isAdmin, GetJobPost);
@@ -17,6 +20,8 @@ router.get('/post/delete/:id', isAdmin, DeleteJob);
 
 // job seekers
 router.get('/user/del/:id', isAdmin, DeleteJobSeeker);
+// job request
+router.get('/deletejob/:ID', DeleteJobRequest);
 
 
 

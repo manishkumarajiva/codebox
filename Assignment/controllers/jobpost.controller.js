@@ -6,7 +6,7 @@ exports.CreateJobPost = async (req, res) => {
     job['CIMAGE'] = req.file.filename;
     
     JobPostModel.CreateJob(job, async function(error, resp){
-        if(error) return res.render('error', { error : {message : error.message, backlink : '/page/jobpost'}});        
+        if(error) return res.render('error', {message : error.message, backlink : '/page/jobpost'});        
         res.render('./admin/profile', {...req.session});
     })
 }

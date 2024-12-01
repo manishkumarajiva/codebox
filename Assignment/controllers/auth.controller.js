@@ -37,6 +37,5 @@ exports.LoginUser = async (req, res) => {
 
 
 exports.Logout = async (req, res) => {
-    req.session.user = false;
-    res.render('/',{...req.session});
+    res.redirect('/');
 }

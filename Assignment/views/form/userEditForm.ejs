@@ -1,0 +1,66 @@
+<%-include('../partials/css.ejs')%>
+<%-include('../partials/navbar.ejs')%>
+
+
+<div class="container mt-4">
+  <div class="row">
+    
+    <!-- User Profile Section -->
+    <div class="col-12 col-md-4">
+      <div class="card shadow-md">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRx4n2UTACZg5IqxHGz_UTdhTtNqgg9DuwLw&s" class="card-img-top p-5" alt="User Image">
+        <div class="card-body">
+          <h5 class="card-title fw-bold"><%= user.NAME.toUpperCase() %></h5>
+          <p class="card-text">Email: <%= user.EMAIL %></p>
+          <p class="card-text">City: <%= user.CITY %></p>
+          <p class="card-text">State: <%= user.STATE %></p>
+          <p class="card-text">Role: <%= user.ROLE %></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Info Update Section -->
+    <div class="col-12 col-md-8">
+      <div class="bg-light border rounded shadow-sm overflow-hidden">
+        
+        <form action="/jobseeker/updateprofile/" method="post">
+          <div class="row gy-4 p-4">
+            
+            <div class="col-12 d-none">
+              <label for="NAME" class="form-label"> User Id <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="ID" name="ID" required value="<%= user.ID %>">
+            </div>  
+
+            <!-- Full Name Field -->
+            <div class="col-12">
+              <label for="NAME" class="form-label">Full Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="NAME" name="NAME" required value="<%= user.NAME %>">
+            </div>
+
+            <!-- City Field -->
+            <div class="col-12">
+              <label for="CITY" class="form-label">City <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="CITY" name="CITY" required value="<%= user.CITY %>">
+            </div>
+
+            <!-- State Field -->
+            <div class="col-12">
+              <label for="STATE" class="form-label">State <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="STATE" name="STATE" required value="<%= user.STATE %>">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-12">
+              <div class="d-grid">
+                <button class="btn btn-primary btn-lg" type="submit">Update</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+        
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -8,7 +8,7 @@
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVkIerflwvgjmybDP4Cz4mrJR-wGCGq7xstA&s"
         alt="BootstrapBrain Logo"
-        height="50"
+        height="60"
       />
     </a>
     <button
@@ -49,42 +49,58 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-
          
+          <%if(user) {%>
+            <li class="nav-item">
+              <a class="nav-link" href="/page/editprofile/<%=user.ID%>"> Profile </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/logout"> Logout </a>
+            </li>
+
+            <li class="nav-item bg-primary text-white text-center py-1 px-3 fw-bold rounded-pill" style="height: 50px;">
+              <%=user?.NAME.toUpperCase()%> 
+            </li>
+
+          <%} else {%>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="/page/aboutus">About</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="/page/contactus">Contact </a>
             </li>
-        
 
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#!"
-              id="accountDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Account</a
-            >
-            <ul
-              class="dropdown-menu border-0 shadow bsb-zoomIn"
-              aria-labelledby="accountDropdown"
-            >
-            
-                <li><a class="dropdown-item" href="/page/login">Log in</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="/page/signup">Sign up</a></li>
-             
-            </ul>
-          </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#!"
+                id="accountDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Account</a
+              >
+              <ul
+                class="dropdown-menu border-0 shadow bsb-zoomIn"
+                aria-labelledby="accountDropdown"
+              >
+              
+                  <li><a class="dropdown-item" href="/page/login">Log in</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li><a class="dropdown-item" href="/page/signup">Sign up</a></li>
+               
+              </ul>
+            </li>
+          <% } %>
+         
         </ul>
       </div>
     </div>

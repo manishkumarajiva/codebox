@@ -240,8 +240,8 @@
                       <td><%= jobrequest[i].APPLYON %></td>
                       <td><%= jobrequest[i].EXPERIENCE || 'N/A' %> year</td>
                       <td class="d-flex flex-wrap justify-content-between">
-                        <a class="text-decoration-none"> ✅ </a>
-                        <a class="text-decoration-none"> ❌ </a>
+                        <a href="#" class="text-decoration-none"> ✅ </a>
+                        <a href="/admin/deletejob/<%=jobrequest[i].ID%>" class="text-decoration-none"> ❌ </a>
                       </td>
                     </tr>
                   <% } } %>

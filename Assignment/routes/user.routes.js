@@ -1,10 +1,9 @@
 const express = require('express');
-const routes = express.Router();
-const { GetAllJobeSeeker } = require('../controllers/users.controller.js');
+const router = express.Router();
+const { GetAllJobeSeeker, UpdateProfile } = require('../controllers/users.controller.js');
 const { CreateJobRequest } = require('../controllers/jobrequest.controller.js');
 
-
-routes.get('/', GetAllJobeSeeker);
-routes.post('/applyjob/:jobid/:userid', CreateJobRequest);
-
-module.exports = routes;
+router.get('/', GetAllJobeSeeker);
+router.post('/applyjob/:jobid/:userid', CreateJobRequest);
+router.post('/updateprofile', UpdateProfile);
+module.exports = router;

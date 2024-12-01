@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { LoginForm, SignUpForm, AdminProfile } = require('../controllers/pages.controller.js')
 const { HomePage, JobPost, AboutUsPage, ContactPage, ApplyForm } = require('../controllers/pages.controller.js')
+const { EditFormPage } = require('../controllers/pages.controller.js')
 
 const { isUser, isAdmin } = require('../middleware/auth.js')
 
@@ -12,6 +13,9 @@ router.get('/signup', SignUpForm);
 router.get('/profile', isAdmin, AdminProfile);
 router.get('/jobpost',isAdmin, JobPost)
 router.get('/apply/:jobid/:userid',isUser, ApplyForm)
+
+
+router.get('/editprofile/:id', EditFormPage);
 
 router.get('/aboutus', AboutUsPage);
 router.get('/contactus', ContactPage);
