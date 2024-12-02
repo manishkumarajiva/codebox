@@ -20,7 +20,6 @@ exports.CreateJobRequest = async (req, res) => {
 
 
 exports.GetAllRequests = async (req, res) => {
-
     JobRequestModel.GetAllRequest(async function (error, resp) {
         if (error) return res.render('error', { message: error.message, backlink: '/' });
         list =  JSON.parse(JSON.stringify(resp));
@@ -29,11 +28,28 @@ exports.GetAllRequests = async (req, res) => {
     })
 }
 
-
-exports.DeleteJobRequest = async (req, res) => {
+exports.AcceptJobRequest = async (req, res) => {
     const sess = req.session;
-    JobRequestModel.DeleteJobRequest(req.params.ID, function(error, resp){
+    JobRequestModel.AcceptRequest(req.params.ID, function(error, resp){
         if (error) return res.render('error', { message: error.message, backlink: '/' });
-        res.render('./admin/profile', {...sess});
+
+        JobRequestModel.GetAllRequest(async function (error, resp) {
+            if (error) return res.render('error', { message: error.message, backlink: '/' });
+            list =  JSON.parse(JSON.stringify(resp));
+            res.render('./admin/profile', {...sess, jobrequest : list});
+        })
+    })
+}
+
+exports.RejectJobRequest = async (req, res) => {
+    const sess = req.session;
+    JobRequestModel.RejectRequest(req.params.ID, function(error, resp){
+        if (error) return res.render('error', { message: error.message, backlink: '/' });
+
+        JobRequestModel.GetAllRequest(async function (error, resp) {
+            if (error) return res.render('error', { message: error.message, backlink: '/' });
+            list =  JSON.parse(JSON.stringify(resp));
+            res.render('./admin/profile', {...sess, jobrequest : list});
+        })
     })
 }

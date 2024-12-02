@@ -10,9 +10,13 @@ const JobRequestModel = {
     GetAllRequest : function(callback){
         DB.query('SELECT * FROM jobapply',callback);
     },
-    DeleteJobRequest : function(id, callback){
+    AcceptRequest : function(id, callback){
         const ID = id;
-        DB.query('DELETE FROM jobapply WHERE ID = ?',[ID], callback);
+        DB.query('UPDATE jobapply SET ACCEPT = ? WHERE ID = ?',[true, ID], callback);
+    },
+    RejectRequest : function(id, callback){
+        const ID = id;
+        DB.query('UPDATE jobapply SET ACCEPT = ? WHERE ID = ?',[false, ID], callback);
     }
 
 }

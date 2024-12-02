@@ -42,16 +42,16 @@ exports.AdminProfile = (req, res) => {
 
 
 exports.AboutUsPage = (req, res) => {
-    res.render('./pages/about');
+    res.render('./pages/about',{...req.session});
 }
 
 exports.ContactPage = (req, res) => {
-    res.render('./pages/contact');
+    res.render('./pages/contact',{...req.session});
 }
 
 
 
 
 exports.JobPost = (req, res) => {
-    res.render('./admin/jobpost');
+    res.render('./admin/jobpost',{...req.session});
 }

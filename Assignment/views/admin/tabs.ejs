@@ -123,7 +123,7 @@
             <div class="container d-flex flex-wrap justify-content-around">
               <% if (jobpost.length > 0) { 
                 for (let i = 0; i < jobpost.length; i++) { %>
-                <div class="card border-1 border-primary my-3 mx-2" style="width: 300px">
+                <div class="card shadow-lg border-0 my-3 mx-2" style="width: 15rem">
                   <div class="card-body px-3 d-flex flex-column align-items-center">
                     <!-- Company Logo Section -->
                     <img class="mx-auto rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRENF9uv9UWIWWbExsgj7XyX58xMFAOZTzUSQ&s" alt="Company Logo" style="width: 80px; height: 80px;" />
@@ -152,8 +152,8 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                      <a href="/post/edit/<%= jobpost[i].ID %>" class="text-info text-decoration-none fs-6">
+                    <div class="d-flex justify-content-between mt-3">
+                      <a href="/post/edit/<%= jobpost[i].ID %>" class="text-info text-decoration-none me-2 fs-6">
                         <button class="btn btn-outline-primary btn-sm">Edit</button>
                       </a>
                       <a href="/admin/post/delete/<%= jobpost[i].ID %>" class="text-danger text-decoration-none fs-6">
@@ -164,7 +164,7 @@
                 </div>
               <% } } else { %>
               <!-- No Posts Available -->
-              <div class="card border-0 bg-transparent">
+              <div class="card border-0 shadow-lg bg-transparent">
                 <figure class="card-img-top mb-4 overflow-hidden bsb-overlay-hover">
                   <a href="#!">
                     <img class="img-fluid bsb-scale bsb-hover-scale-up" loading="lazy" src="jobpost:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/..." alt="No Posts Available" style="object-fit: cover; height: 200px; width: 100%;" />
@@ -219,7 +219,7 @@
           <p>Job Requests: <%= jobrequest.length %></p>
           <div class="container">
             <% if (jobrequest.length > 0) { %>
-              <table class="table table-bordered">
+              <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">UserID</th>
@@ -232,19 +232,32 @@
                 </thead>
                 <tbody>
                   <% for (let i = 0; i < jobrequest.length; i++) { 
-                        if (jobrequest[i].ROLE !== 'ADMIN') { %>
+                        if (jobrequest[i].ROLE !== 'ADMIN') { 
+                          if(jobrequest[i].ACCEPT === 1) { %>
                     <tr>
-                      <td><%= jobrequest[i].USERID %></td>
-                      <td><%= jobrequest[i].JOBPOSTID %></td>
-                      <td><%= jobrequest[i].EMAILID %></td>
-                      <td><%= jobrequest[i].APPLYON %></td>
-                      <td><%= jobrequest[i].EXPERIENCE || 'N/A' %> year</td>
+                      <td class="text-success"><%= jobrequest[i].USERID %></td>
+                      <td class="text-success"><%= jobrequest[i].JOBPOSTID %></td>
+                      <td class="text-success"><%= jobrequest[i].EMAILID %></td>
+                      <td class="text-success"><%= jobrequest[i].APPLYON %></td>
+                      <td class="text-success"><%= jobrequest[i].EXPERIENCE || 'N/A' %> year</td>
                       <td class="d-flex flex-wrap justify-content-between">
-                        <a href="#" class="text-decoration-none"> ✅ </a>
-                        <a href="/admin/deletejob/<%=jobrequest[i].ID%>" class="text-decoration-none"> ❌ </a>
+                        <a href="/admin/acceptrequest/<%=jobrequest[i].ID%>" class="text-decoration-none"> ✅ </a>
+                        <a href="/admin/rejectrequest/<%=jobrequest[i].ID%>" class="text-decoration-none"> ❌ </a>
                       </td>
                     </tr>
-                  <% } } %>
+                  <%} else{ %>
+                    <tr>
+                      <td class="text-danger"><%= jobrequest[i].USERID %></td>
+                      <td class="text-danger"><%= jobrequest[i].JOBPOSTID %></td>
+                      <td class="text-danger"><%= jobrequest[i].EMAILID %></td>
+                      <td class="text-danger"><%= jobrequest[i].APPLYON %></td>
+                      <td class="text-danger"><%= jobrequest[i].EXPERIENCE || 'N/A' %> year</td>
+                      <td class="d-flex flex-wrap justify-content-between">
+                        <a href="/admin/acceptrequest/<%=jobrequest[i].ID%>" class="text-decoration-none"> ✅ </a>
+                        <a href="/admin/rejectrequest/<%=jobrequest[i].ID%>" class="text-decoration-none"> ❌ </a>
+                      </td>
+                    </tr>
+                  <%} } } %>
                 </tbody>
               </table>
             <% } else { %>
@@ -257,4 +270,4 @@
   
       </div>
     </div>
-  </div>
+</div>

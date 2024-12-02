@@ -8,7 +8,7 @@ const { UpdateJobPost, DeleteJob } = require('../controllers/jobpost.controller.
 
 const { DeleteJobSeeker } = require('../controllers/users.controller.js');
 
-const { DeleteJobRequest } = require('../controllers/jobrequest.controller.js');
+const { AcceptJobRequest, RejectJobRequest } = require('../controllers/jobrequest.controller.js');
 
 
 // job post 
@@ -20,8 +20,11 @@ router.get('/post/delete/:id', isAdmin, DeleteJob);
 
 // job seekers
 router.get('/user/del/:id', isAdmin, DeleteJobSeeker);
+
+
 // job request
-router.get('/deletejob/:ID', DeleteJobRequest);
+router.get('/acceptrequest/:ID',isAdmin, AcceptJobRequest);
+router.get('/rejectrequest/:ID',isAdmin, RejectJobRequest);
 
 
 

@@ -16,7 +16,11 @@ exports.DeleteJobSeeker = async(req, res) => {
     const sess = req.session;
     UserModel.DeleteUserById(id, function(error, resp){
         if(error) return res.render('error', {message : error.message, backlink : '/'});
-        res.render('./admin/profile', {...sess})
+
+        UserModel.GetAllUser(function(error, data){
+            if(error) return res.render('error', {message : error.message, backlink : '/'});
+            res.render('./admin/profile', {...sess, jobseeker : data})
+        });
     })
 }
 
@@ -25,9 +29,14 @@ exports.DeleteJobSeeker = async(req, res) => {
 exports.UpdateProfile = async(req, res) => {
     const user = req.body;
     const sess = req.session;
+
     UserModel.UpdateUserById(user, function(error, resp){
         if(error) return res.render('error', { message : error.message, backlink : '/'});
-        res.render('home',{...sess})
+       
+        UserModel.GetAllUser(function(error, data){
+            if(error) return res.render('error', {message : error.message, backlink : '/'});
+            res.render('home', {...sess, jobseeker : data})
+        });
     })
 }
 

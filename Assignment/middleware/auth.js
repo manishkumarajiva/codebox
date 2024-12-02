@@ -1,5 +1,5 @@
 exports.isAdmin = (req, res, next) => {
-    if(req.session.user.ROLE === 'ADMIN'){
+    if(req.session.user?.ROLE === 'ADMIN'){
         next();
     }else{
         res.redirect('/');
@@ -7,7 +7,7 @@ exports.isAdmin = (req, res, next) => {
 }
 
 exports.isUser = (req, res, next) => {
-    if(req.session.user.ROLE === 'USER'){
+    if(req.session.user?.ROLE === 'USER'){
         next();
     }else{
         redirect('/');
