@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="socket.io/socket.io.js"></script>
+</head>
+<body>
+  
+<script>
+  const socket = io();
+
+  socket.on('hello', (message) => {
+      console.log('Connected to server ' + socket.id);
+  });
+
+  socket.on('broadcast1', (message) => {
+    console.log('Connected to server ' + socket.id);
+    document.write('\n'+message.description);
+  });
+</script>
+</body>
+</html>
