@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.login-container {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    width: 300px;
+    text-align: center;
+}
+
+.login-container img {
+    margin-bottom: 1rem;
+}
+.login-container h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #6c757d;
+}
+.form-control {
+    margin-bottom: 1rem;
+}
+.form-check {
+    text-align: left;
+}
+.btn-primary {
+    width: 100%;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.forgot-password {
+    float: right;
+}
+.signup-link {
+    margin-top: 1rem;
+}

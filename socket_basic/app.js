@@ -14,7 +14,6 @@ var clients = 0;
 
 io.on('connection', (socket) => {
   clients++;
-
   setTimeout(() => { // send message to client after 4 seconds
     socket.send('message', 'Hello from server');
   }, 4000);
