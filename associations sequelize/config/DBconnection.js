@@ -17,5 +17,5 @@ const DBconnect = (async (req, res) => {
     }
 })()
 
-module.exports = DBconnect;
+module.exports = {DBconnect, sequelize};
 
