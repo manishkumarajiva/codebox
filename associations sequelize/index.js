@@ -18,5 +18,6 @@ app.get('/', function(req, res){
 // sync models
 (async ()=> await sequelize.sync({force : false}))();
 
+
 const HttpServer = http.createServer(app);
 HttpServer.listen(port, ()=> console.log('Express Listening on 8000'.rainbow))

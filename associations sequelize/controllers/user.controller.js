@@ -2,8 +2,6 @@ const UserModel = require('../models/user.model.js');
 const colors = require('colors');
 
 
-// @ TYPE       POST
-// @ ACCESS     PUBLIC
 
 const SignUp = async (req, res) => {
     const { fullname, username, password } = req.body;
@@ -45,3 +43,6 @@ const SignIn = async (req, res) => {
         res.status(500).json({ status : 500, success : false, message : error.message, err : error });
     }
 }
+
+
+module.exports = { SignUp, SignIn };
