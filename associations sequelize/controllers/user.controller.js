@@ -1,10 +1,12 @@
 const UserModel = require('../models/user.model.js');
+const AddressModel = require('../models/address.model.js');
 const colors = require('colors');
 
 
 
 const SignUp = async (req, res) => {
-    const { fullname, username, password } = req.body;
+    console.log('signup')
+    const { fullname, country, address, username, password } = req.body;
 
     try {
         const alreadyExist = await UserModel.findOne({where : { username : username }});
@@ -17,6 +19,14 @@ const SignUp = async (req, res) => {
         });
 
         if(!create) return res.status(200).json({ status : 400, success : false, message : "Failed To Registered"});
+
+        if(country){
+            const addAddress = await AddressModel.create({
+                country : country,
+                livingAt : address,
+                userId : create.id
+            })
+        }
 
         res.status(201).json({ status : 201, success : true, message : 'Successfully Created', data : create });
     } catch (error) {

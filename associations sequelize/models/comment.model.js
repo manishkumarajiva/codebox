@@ -11,4 +11,8 @@ const CommentModel = sequelize.define('Comment',{
     userId : DataTypes.STRING(36)
 },{ paranoid : true });
 
+CommentModel.associate = (module) => {
+    CommentModel.belongsTo(sequelize.define('Post'))
+}
+
 module.exports = CommentModel;

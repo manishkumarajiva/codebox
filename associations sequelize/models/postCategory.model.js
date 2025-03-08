@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 
 
 // @ Post Category Model
-const PostCategoryJunction = sequelize.define('postcategoryjunction',{
+const PostCategory = sequelize.define('PostCategory',{
     id : {
         type : DataTypes.STRING(36),
         defaultValue : DataTypes.UUIDV1,
@@ -14,4 +14,5 @@ const PostCategoryJunction = sequelize.define('postcategoryjunction',{
 },{ paranoid : true });
 
 
-module.exports = PostCategoryJunction;
+
+module.exports = PostCategory;

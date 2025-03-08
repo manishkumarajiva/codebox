@@ -1,5 +1,5 @@
 const { sequelize } = require('../config/DBconnection.js');
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 
 
 // @ User Model
@@ -24,5 +24,10 @@ const UserModel = sequelize.define('User',{
     }
 },{ paranoid : true });
 
+
+UserModel.associate = (models) => {
+    UserModel.hasOne(sequelize.define('Address'), { foreignKey : 'userId' });
+    UserModel.hasMany(sequelize.define('Post'), { foreignKey : 'userId' });
+}
 
 module.exports = UserModel;

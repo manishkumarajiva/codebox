@@ -11,7 +11,7 @@ const sequelize = new Sequelize('associations', 'root', '',{
 const DBconnect = (async (req, res) => {
     try {
         await sequelize.authenticate();
-        console.log('DATABASE CONNECTED...'.bgYellow);
+        console.log('DATABASE CONNECTED...'.yellow);
     } catch (error) {
         console.log('ERROR DURING DATABASE CONNECTION'.red, error)
     }
