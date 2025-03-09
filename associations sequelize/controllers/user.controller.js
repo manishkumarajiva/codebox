@@ -5,7 +5,6 @@ const colors = require('colors');
 
 
 const SignUp = async (req, res) => {
-    console.log('signup')
     const { fullname, country, address, username, password } = req.body;
 
     try {
@@ -33,7 +32,7 @@ const SignUp = async (req, res) => {
         console.log('ERROR DURING REGISTERATION'.red);
         res.status(500).json({ status : 500, success : false, message : error.message, error : error });
     }
-}
+};
 
 
 
@@ -52,7 +51,20 @@ const SignIn = async (req, res) => {
         console.log('ERROR DURING LOGIN'.yellow);
         res.status(500).json({ status : 500, success : false, message : error.message, err : error });
     }
+};
+
+
+const GetLoggedInUser = async (req, res) => {
+    try {
+        const user = await UserModel.findByPk(req.params.id,{
+            include : { model : AddressModel }
+        });
+        if(!user) return res.status(200).json({ status : 403, success : false, message : 'Not Found'});
+
+        res.status(200).json({ status : 200, success : true, message : 'Successfully Fetch', data : user });
+    } catch (error) {
+        console.log('ERROR DURING FETCH LOGGEDIN USER', error);
+        res.status(500).json({ status : 500, success : false, error : error.stack });
+    }
 }
-
-
-module.exports = { SignUp, SignIn };
+module.exports = { SignUp, SignIn, GetLoggedInUser };

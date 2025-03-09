@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 
 
 // @ Post Category Model
-const CategoryModel = sequelize.define('Category',{
+const CategoryModel = sequelize.define('category',{
     id : {
         type : DataTypes.STRING(36),
         defaultValue : DataTypes.UUIDV1,

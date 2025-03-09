@@ -2,7 +2,7 @@ const { sequelize } = require('../config/DBconnection.js');
 const { DataTypes } = require('sequelize');
 
 
-const CommentModel = sequelize.define('Comment',{
+const CommentModel = sequelize.define('comment',{
     comment : {
         type : DataTypes.STRING,
         allowNull : false
@@ -11,8 +11,5 @@ const CommentModel = sequelize.define('Comment',{
     userId : DataTypes.STRING(36)
 },{ paranoid : true });
 
-CommentModel.associate = (module) => {
-    CommentModel.belongsTo(sequelize.define('Post'))
-}
 
 module.exports = CommentModel;

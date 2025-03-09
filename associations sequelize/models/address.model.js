@@ -1,7 +1,7 @@
 const  { sequelize } = require('../config/DBconnection.js');
 const { DataTypes } = require('sequelize');
 
-const AddressModel = sequelize.define('Address',{
+const AddressModel = sequelize.define('address',{
     id : {
         type : DataTypes.STRING(36),
         defaultValue : DataTypes.UUIDV1,
@@ -22,8 +22,6 @@ const AddressModel = sequelize.define('Address',{
     }
 },{ paranoid : true });
 
-AddressModel.associate = (models) => {
-    AddressModel.belongsTo(models.User)
-}
+
 
 module.exports = AddressModel;

@@ -15,8 +15,11 @@ app.get('/', function(req, res){
     res.send('Server listening...');
 });
 
+/** @associations */
+require('./associations/userAddress.association.js');
+
 // sync models
-(async ()=> await sequelize.sync({alter : true}))();
+(async ()=> await sequelize.sync({force : false}))();
 
 
 require('./routes/user.routes.js')(app);
