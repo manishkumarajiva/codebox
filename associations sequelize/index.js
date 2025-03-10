@@ -17,13 +17,17 @@ app.get('/', function(req, res){
 
 /** @associations */
 require('./associations/userAddress.association.js');
+require('./associations/userPost.association.js');
+require('./associations/postComment.association.js');
 
 // sync models
-(async ()=> await sequelize.sync({force : false}))();
+(async ()=> await sequelize.sync({force : false }))();
 
 
 require('./routes/user.routes.js')(app);
 require('./routes/category.routes.js')(app);
+require('./routes/post.routes.js')(app);
+require('./routes/comment.routes.js')(app);
 
 
 const HttpServer = http.createServer(app);

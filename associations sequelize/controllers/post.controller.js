@@ -2,8 +2,8 @@ const PostModel = require('../models/post.model.js');
 
 
 const CreatePost = async (req, res) => {
-    const { title, content } = req.body;
-    const id = req.userId;
+    const { title, content, id } = req.body;
+
 
     try {
         const post = await PostModel.create({

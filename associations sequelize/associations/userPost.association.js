@@ -1,21 +1,21 @@
 const UserModel = require('../models/user.model.js');
-const AddressModel = require('../models/address.model.js');
+const PostModel = require('../models/post.model.js');
 
 
 /**
-    @type --> One To One Associations
-    user and address
-*/
+ @type --> One To Many Associations
+ user and post
+ */
 
-UserModel.hasOne(AddressModel,{
+ UserModel.hasMany(PostModel,{
     foreignKey : 'userId',
     onDelete : 'CASCADE',
     onUpdate : 'CASCADE'
-});
+ });
 
-
-AddressModel.belongsTo(UserModel,{
+ 
+ PostModel.belongsTo(UserModel,{
     foreignKey : 'userId',
     onDelete : 'CASCADE',
     onUpdate : 'CASCADE'
-});
+ });

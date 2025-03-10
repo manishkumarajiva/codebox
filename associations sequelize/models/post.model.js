@@ -24,10 +24,6 @@ const PostModel = sequelize.define('post',{
 },{ paranoid : true });
 
 
-PostModel.associate = (models) => {
-    PostModel.belongsTo(sequelize.define('User'));
-    PostModel.belongsToMany(sequelize.define('Category'), { through : 'PostCategory'});
-    PostModel.hasMany(sequelize.define('Comment'));
-}
+
 
 module.exports = PostModel;
