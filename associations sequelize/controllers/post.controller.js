@@ -1,9 +1,9 @@
 const PostModel = require('../models/post.model.js');
+const CommentModel = require('../models/comment.model.js');
 
 
 const CreatePost = async (req, res) => {
     const { title, content, id } = req.body;
-
 
     try {
         const post = await PostModel.create({
@@ -23,7 +23,7 @@ const CreatePost = async (req, res) => {
 
 
 const FetchPosts = async (req, res) => {
-    const id = req.userId;
+    const id = req.params.id;
 
     try {
         const posts = await PostModel.findAll({ where : { userId : id }});
