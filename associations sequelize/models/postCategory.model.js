@@ -9,10 +9,16 @@ const PostCategory = sequelize.define('post_category',{
         defaultValue : DataTypes.UUIDV1,
         primaryKey : true
     },
-    postId : DataTypes.STRING(36),
-    categoryId : DataTypes.STRING(36)
+    postId : {
+        type : DataTypes.STRING(36),
+        allowNull : false
+    },
+    categoryId : {
+        type : DataTypes.STRING(36),
+        allowNull : false
+    }
 },{ paranoid : true });
 
 
 
-module.exports = PostCategory;
+module.exports = PostCategoryModel;

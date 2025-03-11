@@ -19,6 +19,7 @@ app.get('/', function(req, res){
 require('./associations/userAddress.association.js');
 require('./associations/userPost.association.js');
 require('./associations/postComment.association.js');
+require('./associations/postCategory.association.js');
 
 // sync models
 (async ()=> await sequelize.sync({force : false }))();

@@ -26,7 +26,7 @@ const FetchPosts = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const posts = await PostModel.findAll({ where : { userId : id }});
+        const posts = await PostModel.findAll({ where : { userId : id }, include : {model : CommentModel}});
         if(!posts.length) return res.status(200).json({ status : 200, success : true, message : 'Empty Posts' });
 
         res.status(200).json({ status : 200, success : true, message : 'Successfully Fetched', data : posts });
