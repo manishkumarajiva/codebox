@@ -1,9 +1,11 @@
 const { sequelize } = require('../config/DBconnection.js');
 const { DataTypes } = require('sequelize');
+const PostModel = require('./post.model.js');
+const CategoryModel = require('./category.model.js');
 
 
 // @ Post Category Model
-const PostCategory = sequelize.define('post_category',{
+const PostCategoryModel = sequelize.define('post_category',{
     id : {
         type : DataTypes.STRING(36),
         defaultValue : DataTypes.UUIDV1,
@@ -11,11 +13,19 @@ const PostCategory = sequelize.define('post_category',{
     },
     postId : {
         type : DataTypes.STRING(36),
-        allowNull : false
+        allowNull : false,
+        references : {
+            model : PostModel,
+            key : 'id'
+        }
     },
     categoryId : {
         type : DataTypes.STRING(36),
-        allowNull : false
+        allowNull : false,
+        references : {
+            model : CategoryModel,
+            key : 'id'
+        }
     }
 },{ paranoid : true });
 
