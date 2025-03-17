@@ -14,6 +14,8 @@ const CreatePost = async (req, res) => {
 
         if(!post) return res.status(200).json({ status : 400, success : false, message : 'Failed To Create' });
 
+        await post.
+
         res.status(201).json({ status : 201, success : true, message : 'Successfully Post', data : post });
     } catch (error) {
         console.log('ERROR DURING CREATE POST', error);

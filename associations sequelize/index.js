@@ -22,7 +22,7 @@ require('./associations/index.associations.js');
 (async ()=> await sequelize.sync({ force : false }))();
 
 /** @Routes */
-require('./routes/index.routes.js');
+require('./routes/index.routes.js')(app);
 
 
 const HttpServer = http.createServer(app);
