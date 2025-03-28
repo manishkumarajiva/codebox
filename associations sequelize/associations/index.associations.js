@@ -4,3 +4,5 @@ module.exports = () => {
   require("./associations/postComment.association.js");
   require("./associations/postCategory.association.js");
 };
+
+// lll
